@@ -1,0 +1,66 @@
+definitions:
+  exceptions.ProblemDetails:
+    properties:
+      detail:
+        type: string
+      instance:
+        type: string
+      status:
+        type: integer
+      title:
+        type: string
+      type:
+        type: string
+    type: object
+  usecases.CreateUserInputDTO:
+    properties:
+      code:
+        type: string
+    type: object
+  usecases.CreateUserOutputDTO:
+    properties:
+      content_message:
+        type: string
+      success_message:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /oauth:
+    post:
+      consumes:
+        - application/json
+      description: Registers a new championship in the system
+      parameters:
+        - description: Championship data
+          in: body
+          name: request
+          required: true
+          schema:
+            $ref: "#/definitions/usecases.CreateUserInputDTO"
+      produces:
+        - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: "#/definitions/usecases.CreateUserOutputDTO"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/exceptions.ProblemDetails"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/exceptions.ProblemDetails"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/exceptions.ProblemDetails"
+      security:
+        - BearerAuth: []
+      summary: Create a new championship
+      tags:
+        - Championship
+swagger: "2.0"
