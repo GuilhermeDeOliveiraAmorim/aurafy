@@ -27,10 +27,10 @@ go.work
 .env.prod
 .env.dev.go
 .env.prod.go
-internal/config/env.dev.go
-internal/config/env.dev
-internal/config/env.prod.go
-internal/config/env.prod
+/internal/config/env.dev.go
+/internal/config/env.dev
+/internal/config/env.prod.go
+/internal/config/env.prod
 
 # DB path
 /postgres-data
